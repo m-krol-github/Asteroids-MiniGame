@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
-    public class UIGameplay : BaseView
+    public sealed class UIGameplay : BaseView
     {
         [SerializeField] private UIGameInfo _gameInfo;
         [SerializeField] private UIPause _uiPause;
@@ -15,10 +15,6 @@ namespace Gameplay.UI
         [SerializeField] private Button pauseButton;
 
         private GameManager _manager;
-
-        private void Awake()
-        {
-        }
 
         public void InitGameplay(GameManager manager)
         {

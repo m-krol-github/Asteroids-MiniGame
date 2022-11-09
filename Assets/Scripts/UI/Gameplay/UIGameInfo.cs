@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay.UI
 {
-    public class UIGameInfo : BaseView
+    public sealed class UIGameInfo : BaseView
     {
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI livesText;

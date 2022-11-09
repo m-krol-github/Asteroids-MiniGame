@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
-    public class UIPause : BaseView
+    public sealed class UIPause : BaseView
     {
         [SerializeField] private Button gameExit;
         [SerializeField] private Button closeView;

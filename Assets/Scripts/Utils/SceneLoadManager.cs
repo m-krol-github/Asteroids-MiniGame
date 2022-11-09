@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace MainMenu
 {
-    public class SceneLoadManager : Singleton<SceneLoadManager>
+    public sealed class SceneLoadManager : Singleton<SceneLoadManager>
     {
         public static readonly string SCENE_MAINMENU = "MainMenu";
 

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MainMenu
 {
-    public class MainMenuManager : MonoBehaviour
+    public sealed class MainMenuManager : MonoBehaviour
     {
         [SerializeField] private Button playButton;
         [SerializeField] private Button exitGameButton;

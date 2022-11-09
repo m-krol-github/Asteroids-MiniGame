@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7825684475245993881}
   - component: {fileID: 5305319679272706933}
   - component: {fileID: 648898607484088374}
+  - component: {fileID: 8775608783576368511}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -102,12 +103,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &5305319679272706933
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -159,5 +160,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3e940cdbffe98e459bbc5fa4ddf890d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 0
+  _rotateSpeed: 0
+  rb: {fileID: 7825684475245993881}
+  col: {fileID: 0}
+  hp: 0
+  currentDirection: {x: 0, y: 0}
+  mousePointerPosition: {x: 0, y: 0}
+  _moveRoation: {fileID: 8775608783576368511}
+--- !u!114 &8775608783576368511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894974271148573662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf83599ca6f13e344b6568fb68fb1e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

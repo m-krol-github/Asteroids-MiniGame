@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Gameplay.UI
 {
-    public class UIGameOver : BaseView
+    public sealed class UIGameOver : BaseView
     {
 
         private GameManager _manager;
