@@ -6,6 +6,17 @@ namespace Gameplay.Obstacles
 {
     public class LargeAsteroid : BaseAsteroid
     {
+        protected override void SetTrajectory(Vector2 direction)
+        {
+            base.SetTrajectory(direction);
 
+        }
+
+        protected override void OnCollisionEnter2D(Collision2D collision)
+        {
+            base.OnCollisionEnter2D(collision);
+
+            GameManager.Instance.UIGameplay.UIGameInfo.AddScore(100);
+        }
     }
 }

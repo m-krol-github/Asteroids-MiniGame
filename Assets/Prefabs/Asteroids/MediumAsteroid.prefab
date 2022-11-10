@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4558021583508095246}
-  - component: {fileID: 5340837149202553951}
   - component: {fileID: 2000108084056217977}
   - component: {fileID: 1732461224235807997}
   - component: {fileID: 6017982477290162623}
+  - component: {fileID: 5342221253604209628}
   m_Layer: 0
   m_Name: MediumAsteroid
   m_TagString: Untagged
@@ -35,29 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5340837149202553951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4671857667208055973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a546d144fbe5247a6f2fcc6a77798f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0
-  maxMoveSpeed: 0
-  rotateSpeed: 0
-  moveDirection: {x: 0, y: 0}
-  scoreForPlayer: 0
-  asteroidSpriteSet:
-  - {fileID: 21300000, guid: bef3745353ab43f4499c90c0db16c4f6, type: 3}
-  - {fileID: 21300000, guid: 32d56444e0ed9b34daf31f30e51dc7a6, type: 3}
-  rb: {fileID: 0}
-  col: {fileID: 0}
-  asteroidRenderer: {fileID: 0}
 --- !u!50 &2000108084056217977
 Rigidbody2D:
   serializedVersion: 4
@@ -161,3 +138,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5342221253604209628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671857667208055973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3549a186f0557649afbcdeee5763067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minMoveSpeed: 10
+  maxMoveSpeed: 15
+  moveSpeed: 0
+  rotateSpeed: 0
+  moveDirection: {x: 0, y: 0}
+  scoreForPlayer: 0
+  asteroidSpriteSet:
+  - {fileID: 21300000, guid: bef3745353ab43f4499c90c0db16c4f6, type: 3}
+  - {fileID: 21300000, guid: 32d56444e0ed9b34daf31f30e51dc7a6, type: 3}
+  rb: {fileID: 2000108084056217977}
+  col: {fileID: 1732461224235807997}
+  asteroidRenderer: {fileID: 6017982477290162623}
+  trajectoryVariance: 15

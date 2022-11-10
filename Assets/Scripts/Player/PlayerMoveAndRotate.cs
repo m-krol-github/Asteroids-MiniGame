@@ -21,18 +21,11 @@ namespace Gameplay.GamePlayer
             transform.eulerAngles = new Vector3(0, 0, angle);
         }
 
-        public void MovePosition(Vector2 mousePosition, float speed, float smoothTime, float minDistance)
+        public void MoveShip(Rigidbody2D rb, Vector2 currentDirection, float _moveSpeed)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(mousePosition);
-            // Offsets the target position so that the object keeps its distance.
-            mousePos += ((Vector2)transform.position - mousePos).normalized * minDistance;
-            transform.position = Vector2.SmoothDamp(transform.position, mousePos, ref currentVelocity, smoothTime, speed);
-
-        }
-
-        public void MoveKeysPosition(Rigidbody2D rb,Vector2 direction, float speed)
-        {
-            
+            Vector2 moveDirection = (transform.up * currentDirection.y) + (transform.right * currentDirection.x);
+            moveDirection = moveDirection * _moveSpeed;
+            rb.AddForce(moveDirection * Time.deltaTime, ForceMode2D.Force);
         }
     }
 }

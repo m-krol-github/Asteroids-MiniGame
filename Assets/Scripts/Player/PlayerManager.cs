@@ -1,3 +1,5 @@
+using Gameplay.Pool;
+
 using UnityEngine;
 
 namespace Gameplay.GamePlayer
@@ -11,14 +13,14 @@ namespace Gameplay.GamePlayer
         [Header("Player InGame Properties")]
         [Space]
         [SerializeField] private float playerSpeed;
-        [SerializeField] private float playerRotationSpeed;
         [SerializeField] private int playerLives;
         [Space]
         [Header("Player Ship Prefab")]
         [SerializeField] private Player _player;
 
         [SerializeField] private Transform playerStartPoint;
-        
+
+        [SerializeField] private PoolManager _pooling;
         private GameManager _manager;
 
         public void InitPlayerManager(GameManager manager)
@@ -28,16 +30,11 @@ namespace Gameplay.GamePlayer
             PlayerDispatch();
         }
 
-        public void UpdatePlayerManager()
-        {
-            
-        }
-
         private void PlayerDispatch()
         {
             Player player = Instantiate(_player, playerStartPoint.position, transform.rotation);
             playgamePlayer = player;
-            player.PlayerInit(_manager, playerSpeed, playerRotationSpeed);
+            player.PlayerInit(_manager, _pooling, playerSpeed);
         }
         
         

@@ -9,6 +9,8 @@ namespace Gameplay.UI
     public sealed class UIGameplay : BaseView
     {
         [SerializeField] private UIGameInfo _gameInfo;
+        public UIGameInfo UIGameInfo => _gameInfo;
+
         [SerializeField] private UIPause _uiPause;
         [SerializeField] private UIGameOver _gameOver;
         

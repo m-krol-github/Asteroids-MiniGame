@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 
 namespace Gameplay.Pool
 {
-    public sealed class PoolManager : MonoBehaviour
+    public sealed class PoolManager : Singleton<PoolManager>
     {
         public PoolItem[] poolItems;
 
@@ -16,8 +16,9 @@ namespace Gameplay.Pool
         private readonly Dictionary<int, bool> growable = new();
         private readonly Dictionary<int, Transform> parents = new();
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             PoolInit();
         }
 

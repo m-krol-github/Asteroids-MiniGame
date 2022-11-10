@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Gameplay.Pool
 {
     [System.Serializable]
-    public class PoolItem 
+    public sealed class PoolItem 
     {
         public GameObject poolItem;
         public string itemName;

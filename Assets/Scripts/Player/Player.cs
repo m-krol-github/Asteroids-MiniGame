@@ -2,6 +2,9 @@ using Gameplay.Input;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
+using Gameplay.Pool;
+using System.Collections;
+using Gameplay.Weapons;
 
 namespace Gameplay.GamePlayer
 {
@@ -10,6 +13,7 @@ namespace Gameplay.GamePlayer
     {
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotateSpeed;
+        [SerializeField] private float _shootForce = 25f;
 
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Collider2D col;
@@ -21,13 +25,18 @@ namespace Gameplay.GamePlayer
         [SerializeField] private Vector2 mousePointerPosition;
 
         [SerializeField] private PlayerMoveAndRotate _moveRoation;
-        
+
+        [SerializeField] private GameObject _bullet;
+        [SerializeField] private Transform _shootPoint;
+
         private GameManager _manager;
+        private PoolManager _pooling;
         private UserInputs _inputs;
         
         private void Awake()
         {
             _inputs = new UserInputs();
+            _inputs.Mouse.PrimaryButton.performed += (ctx) => Shoot();
         }
 
         private void OnEnable()
@@ -35,11 +44,11 @@ namespace Gameplay.GamePlayer
             _inputs.Enable();
         }
         
-        public void PlayerInit(GameManager manager, float moveSpeed, float rotateSpeed)
+        public void PlayerInit(GameManager manager, PoolManager pooling, float moveSpeed)
         {
             _manager = manager;
+            _pooling = pooling;
             _moveSpeed = moveSpeed;
-            _rotateSpeed = rotateSpeed;
 
             Values.PlayerValues.IsPlayerInitialized = true;
         }
@@ -49,24 +58,26 @@ namespace Gameplay.GamePlayer
             currentDirection = _inputs.Keyboard.MoveKeys.ReadValue<Vector2>();
             mousePointerPosition = _inputs.Mouse.PointerPosition.ReadValue<Vector2>();
 
-            MoveShip();
+            _moveRoation.MoveShip(rb, currentDirection, _moveSpeed);
 
-            RotateShip();
+            _moveRoation.UpdateRotation(mousePointerPosition);
 
-            if(hp <= 0)
+            if (hp <= 0)
                 LifeLost();    
         }
 
-        private void RotateShip()
+        private void Shoot()
         {
-            _moveRoation.UpdateRotation(mousePointerPosition);
+            StartCoroutine(ShootRoutine());
         }
 
-        private void MoveShip()
+        private IEnumerator ShootRoutine()
         {
-            moveDirection = (transform.up * currentDirection.y) + (transform.right * currentDirection.x);
-            moveDirection = moveDirection * _moveSpeed;
-            rb.AddForce(moveDirection * Time.deltaTime, ForceMode2D.Force);
+            GameObject go = _pooling.UseObject(_bullet, _shootPoint.position, transform.rotation);
+            Rigidbody2D bulletBody = go.GetComponent<Rigidbody2D>();
+
+            bulletBody.AddForce(transform.up * _shootForce, ForceMode2D.Impulse);
+            yield return null;
         }
 
         public void AsteroidCollision(int cost)

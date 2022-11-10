@@ -318,8 +318,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameplayUI: {fileID: 2016764314}
   _playerManager: {fileID: 2058862919}
-  sizeY: 0
-  sizeX: 0
+  _asteroidsManager: {fileID: 1162444851}
+  screenSizeY: 0
+  screenSizeX: 0
 --- !u!1 &351695139
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,8 +859,8 @@ Transform:
   m_Children:
   - {fileID: 345811106}
   - {fileID: 2058862918}
-  - {fileID: 1768180524}
   - {fileID: 1034100763}
+  - {fileID: 1162444850}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1480,9 +1481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f85f67969cf80b438aa54d4880a4541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  livesText: {fileID: 0}
-  levelText: {fileID: 0}
+  scoreText: {fileID: 858041661}
+  livesText: {fileID: 448767484}
+  levelText: {fileID: 1974950516}
 --- !u!1 &1034100762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1514,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 670444955}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1034100764
 MonoBehaviour:
@@ -1535,15 +1536,67 @@ MonoBehaviour:
     growable: 1
   - poolItem: {fileID: 4671857667208055973, guid: 3db59679fcb8a0544b8b9d1af03b274b,
       type: 3}
-    itemName: largeAsteroid
+    itemName: mediumAsteroid
     poolAmount: 10
     growable: 1
   - poolItem: {fileID: 4543643523923512256, guid: de4d064cb498ba54dbb99fa09eb89b56,
       type: 3}
-    itemName: largeAsteroid
+    itemName: smallAsteroid
+    poolAmount: 10
+    growable: 1
+  - poolItem: {fileID: 5639803573328974809, guid: f10003e755139804a852d71d61b8bccd,
+      type: 3}
+    itemName: basicBullet
     poolAmount: 10
     growable: 1
   poolParent: {fileID: 0}
+--- !u!1 &1162444849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1162444850}
+  - component: {fileID: 1162444851}
+  m_Layer: 0
+  m_Name: AsteroidsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1162444850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162444849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 670444955}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1162444851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162444849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9814d7098cdb3c34daf6cea7f828d84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pooling: {fileID: 1034100764}
+  _types: {fileID: 11400000, guid: e7f15d1b675dc584da9723a7243bf38d, type: 2}
+  maxNumber: 25
 --- !u!1 &1522529956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,88 +1809,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557821420}
   m_CullTransparentMesh: 1
---- !u!1 &1752049177
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1752049179}
-  - component: {fileID: 1752049178}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1752049178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752049177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c0afc5eea993343a879d464ee169b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pool: {fileID: 1034100764}
-  asteroidBig: {fileID: 36684431241806964, guid: 34827bfcbaad4cd448cb12012aebe046,
-    type: 3}
-  asteroidMiddle: {fileID: 4671857667208055973, guid: 3db59679fcb8a0544b8b9d1af03b274b,
-    type: 3}
-  asteroidSmall: {fileID: 4543643523923512256, guid: de4d064cb498ba54dbb99fa09eb89b56,
-    type: 3}
---- !u!4 &1752049179
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752049177}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1768180523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1768180524}
-  m_Layer: 0
-  m_Name: ObstaclesManager (asteroids)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1768180524
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768180523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 670444955}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1947499552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,10 +2298,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playgamePlayer: {fileID: 0}
   playerSpeed: 200
-  playerRotationSpeed: 100
   playerLives: 3
   _player: {fileID: 648898607484088374, guid: da6d0eab8483a714892040198a54931d, type: 3}
   playerStartPoint: {fileID: 785306157}
+  _pooling: {fileID: 1034100764}
 --- !u!1 &2068004127
 GameObject:
   m_ObjectHideFlags: 0
