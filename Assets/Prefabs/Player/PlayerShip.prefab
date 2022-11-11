@@ -206,6 +206,7 @@ MonoBehaviour:
   _moveRoation: {fileID: 8775608783576368511}
   _bullet: {fileID: 5639803573328974809, guid: f10003e755139804a852d71d61b8bccd, type: 3}
   _shootPoint: {fileID: 6116579973736103806}
+  _renderer: {fileID: 8894974271148573633}
 --- !u!114 &8775608783576368511
 MonoBehaviour:
   m_ObjectHideFlags: 0

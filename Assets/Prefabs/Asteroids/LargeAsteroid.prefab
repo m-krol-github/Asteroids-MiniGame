@@ -47,12 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a546d144fbe5247a6f2fcc6a77798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreForPlayer: 100
   minMoveSpeed: 10
-  maxMoveSpeed: 15
+  maxMoveSpeed: 20
   moveSpeed: 0
-  rotateSpeed: 0
-  moveDirection: {x: 0, y: 0}
-  scoreForPlayer: 0
+  trajectoryVariance: 15
   asteroidSpriteSet:
   - {fileID: 21300000, guid: 6c5da61ed048e4443be1149064ce9e5d, type: 3}
   - {fileID: 21300000, guid: a1e4b6c98a92aa64988eaf512a84447e, type: 3}
@@ -61,7 +60,6 @@ MonoBehaviour:
   rb: {fileID: 6599565884030013864}
   col: {fileID: 6367352985468353580}
   asteroidRenderer: {fileID: 1428690761759342958}
-  trajectoryVariance: 15
 --- !u!50 &6599565884030013864
 Rigidbody2D:
   serializedVersion: 4

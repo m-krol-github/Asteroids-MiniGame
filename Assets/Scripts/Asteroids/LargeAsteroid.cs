@@ -6,6 +6,8 @@ namespace Gameplay.Obstacles
 {
     public class LargeAsteroid : BaseAsteroid
     {
+
+
         protected override void SetTrajectory(Vector2 direction)
         {
             base.SetTrajectory(direction);

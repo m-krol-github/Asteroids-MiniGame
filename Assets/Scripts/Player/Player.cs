@@ -29,6 +29,7 @@ namespace Gameplay.GamePlayer
         [SerializeField] private GameObject _bullet;
         [SerializeField] private Transform _shootPoint;
 
+        [SerializeField] private Renderer _renderer;
         private GameManager _manager;
         private PoolManager _pooling;
         private UserInputs _inputs;
@@ -63,7 +64,44 @@ namespace Gameplay.GamePlayer
             _moveRoation.UpdateRotation(mousePointerPosition);
 
             if (hp <= 0)
-                LifeLost();    
+                LifeLost();
+
+            PositionLimits();
+        }
+
+        private void PositionLimits()
+        {
+            //float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
+            //float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
+            
+                //Vector3 screenPosition = transform.position;
+            
+            if (transform.position.x > 12.5) 
+            {
+                transform.position = new Vector2(-12.5f,transform.position.y);
+            }
+            else if (transform.position.x < -12.5f)
+            {
+                transform.position = new Vector2(12.5f ,transform.position.y);
+            }
+            else if (transform.position.y > 8) 
+            {
+                transform.position = new Vector2(transform.position.x, -8);
+            }
+            else if (transform.position.x < -Values.GameValues.SCREEN_SIZE_Y / 2)
+            {
+                transform.position = new Vector2(transform.position.x, 8);
+            }
+        }
+
+        private bool IsVisible()
+        {
+            if (_renderer.isVisible)
+            {
+                return true;
+            }
+            
+            return false;
         }
 
         private void Shoot()

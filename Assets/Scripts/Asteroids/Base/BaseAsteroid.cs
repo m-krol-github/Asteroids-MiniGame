@@ -9,22 +9,25 @@ namespace Gameplay.Obstacles
 {
     public class BaseAsteroid : MonoBehaviour
     {
+        [SerializeField] protected int scoreForPlayer;
+        [Header("Asteroid Move Properties"), Space]
+        [Range(0f, 20f)]
         [SerializeField] protected float minMoveSpeed;
+        [Range(20f, 45f)]
         [SerializeField] protected float maxMoveSpeed;
         [SerializeField] protected float moveSpeed;
-        [SerializeField] protected float rotateSpeed;
-        [SerializeField] protected Vector2 moveDirection;
+        [Range(0f, 45f)]
+        [SerializeField] protected float trajectoryVariance = 15f;
 
-        [SerializeField] protected int scoreForPlayer;
 
+        [Header("Asteroid Sprite Set Random"), Space]
         [SerializeField] protected Sprite[] asteroidSpriteSet;
 
+        [Header("Asteroid Components to fill"), Space]
         [SerializeField] protected Rigidbody2D rb;
         [SerializeField] protected Collider2D col;
         [SerializeField] protected SpriteRenderer asteroidRenderer;
 
-        [Range(0f, 45f)]
-        [SerializeField] protected float trajectoryVariance = 15f;
 
         protected void Awake()
         {
@@ -46,7 +49,6 @@ namespace Gameplay.Obstacles
             float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
-            // Set the trajectory to move in the direction of the spawner
             Vector2 trajectory = rotation * -spawnDirection;
             SetTrajectory(trajectory);
         }
@@ -64,6 +66,12 @@ namespace Gameplay.Obstacles
                 PoolManager.Instance.ReturnObject(collision.gameObject, 0f);
                 
                 PoolManager.Instance.ReturnObject(this.gameObject, 0f);
+            }
+
+            if (collision.gameObject.CompareTag("Asteroid"))
+            {
+                Vector2 dir = new Vector2(Random.Range(-1f, 1f),Random.Range(-1f,1f));
+                rb.AddForce(dir * minMoveSpeed, ForceMode2D.Force);
             }
         }
     }

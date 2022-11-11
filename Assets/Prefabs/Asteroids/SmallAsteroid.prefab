@@ -155,7 +155,7 @@ MonoBehaviour:
   moveSpeed: 0
   rotateSpeed: 0
   moveDirection: {x: 0, y: 0}
-  scoreForPlayer: 0
+  scoreForPlayer: 400
   asteroidSpriteSet:
   - {fileID: 21300000, guid: 89f2a7b5a40e5914aa7dee0abb097492, type: 3}
   - {fileID: 21300000, guid: c2a4b0bc956249d4ab436878581881aa, type: 3}
