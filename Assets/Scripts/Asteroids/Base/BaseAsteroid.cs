@@ -35,6 +35,7 @@ namespace Gameplay.Obstacles
 
         protected void OnEnable()
         {
+
             int asteroid = Random.Range(0, asteroidSpriteSet.Length);
             asteroidRenderer.sprite = asteroidSpriteSet[asteroid];
 

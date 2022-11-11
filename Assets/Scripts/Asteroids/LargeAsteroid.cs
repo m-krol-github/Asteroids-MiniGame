@@ -16,7 +16,10 @@ namespace Gameplay.Obstacles
         {
             base.OnCollisionEnter2D(collision);
 
-            GameManager.Instance.UIGameplay.UIGameInfo.AddScore(100);
+            if (collision.gameObject.CompareTag("Bullet"))
+            {
+                GameManager.Instance.UIGameplay.UIGameInfo.AddScore(100);
+            }
         }
     }
 }

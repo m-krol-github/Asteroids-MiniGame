@@ -1481,9 +1481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f85f67969cf80b438aa54d4880a4541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 858041661}
-  livesText: {fileID: 448767484}
-  levelText: {fileID: 1974950516}
+  scoreText: {fileID: 2092656490}
+  livesText: {fileID: 1009202404}
+  levelText: {fileID: 351695141}
 --- !u!1 &1034100762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pooling: {fileID: 1034100764}
   _types: {fileID: 11400000, guid: e7f15d1b675dc584da9723a7243bf38d, type: 2}
-  maxNumber: 25
+  spawnDistance: 7
+  minNumber: 35
+  maxNumber: 40
 --- !u!1 &1522529956
 GameObject:
   m_ObjectHideFlags: 0

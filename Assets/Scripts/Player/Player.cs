@@ -36,7 +36,7 @@ namespace Gameplay.GamePlayer
         private void Awake()
         {
             _inputs = new UserInputs();
-            _inputs.Mouse.PrimaryButton.performed += (ctx) => Shoot();
+            _inputs.Shooting.Shoot.performed += (ctx) => Shoot();
         }
 
         private void OnEnable()
@@ -55,8 +55,8 @@ namespace Gameplay.GamePlayer
 
         public void Update()
         {
-            currentDirection = _inputs.Keyboard.MoveKeys.ReadValue<Vector2>();
-            mousePointerPosition = _inputs.Mouse.PointerPosition.ReadValue<Vector2>();
+            currentDirection = _inputs.Moving.MoveKeys.ReadValue<Vector2>();
+            mousePointerPosition = _inputs.Moving.PointerPosition.ReadValue<Vector2>();
 
             _moveRoation.MoveShip(rb, currentDirection, _moveSpeed);
 

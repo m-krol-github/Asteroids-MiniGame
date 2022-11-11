@@ -9,20 +9,25 @@ namespace Gameplay.UI
         [SerializeField] private TextMeshProUGUI livesText;
         [SerializeField] private TextMeshProUGUI levelText;
 
+        private int score;
+        private int lifes;
+        private int level;
+
         private GameManager _manager;
 
         public void InitGameInfo(GameManager manager)
         {
             _manager = manager;
 
-            scoreText.text = 0.ToString();
-            levelText.text = 0.ToString();
-            livesText.text = 3.ToString();
+            scoreText.text = 0.ToString("D5");
+            levelText.text = 0.ToString("D3");
+            livesText.text = 3.ToString("D3");
         }
 
         public void AddScore(int score)
         {
-            scoreText.text += score.ToString();
+            this.score += score;
+            scoreText.text = this.score.ToString("D5");
         }
 
         public void AddLevel(int level)

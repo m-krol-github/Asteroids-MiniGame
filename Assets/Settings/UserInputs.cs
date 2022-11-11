@@ -26,13 +26,22 @@ namespace Gameplay.Input
     ""name"": ""UserInputs"",
     ""maps"": [
         {
-            ""name"": ""Keyboard"",
+            ""name"": ""Moving"",
             ""id"": ""7827b0e3-9066-4555-a9d9-a12d1c06dadb"",
             ""actions"": [
                 {
                     ""name"": ""MoveKeys"",
                     ""type"": ""Value"",
                     ""id"": ""2c1d897d-c6ca-4b91-b061-840aba0c2c20"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PointerPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""584ce157-4e3f-4482-a40e-6c2f872ecb85"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -94,33 +103,81 @@ namespace Gameplay.Input
                     ""action"": ""MoveKeys"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""402c24bb-858a-4835-a5fc-67abd23dc38b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveKeys"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""14928281-15e3-400d-8c2f-be02d747414b"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Input"",
+                    ""action"": ""MoveKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""544337de-1ae4-42c9-815a-8a1b82436d6f"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Input"",
+                    ""action"": ""MoveKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5eeac92a-c93b-4b61-99dd-2167ad1c65ea"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Input"",
+                    ""action"": ""MoveKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d9b31360-100c-4976-bb7b-8b113ef0ca7f"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Input"",
+                    ""action"": ""MoveKeys"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0ab661a-9fdb-4399-9ab9-a4787da2c173"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Input"",
+                    ""action"": ""PointerPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""Mouse"",
+            ""name"": ""Shooting"",
             ""id"": ""6d090fe6-2110-47c1-a3fa-e5a25835e777"",
             ""actions"": [
                 {
-                    ""name"": ""PointerPosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""eeddbc36-967d-4996-9a83-68f3af94af76"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""PointerPositionDelta"",
-                    ""type"": ""Value"",
-                    ""id"": ""24a144f5-132a-4890-a0c2-799d72983093"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""PrimaryButton"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""26026e0a-d0c5-41d9-8c2e-56df7e0b466e"",
                     ""expectedControlType"": ""Button"",
@@ -150,34 +207,23 @@ namespace Gameplay.Input
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""fb7515ba-f910-453f-9a50-a97ce6df793c"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Input"",
-                    ""action"": ""PointerPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""04116c3b-604b-45e2-acf3-a5358707bd10"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Input"",
-                    ""action"": ""PointerPositionDelta"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""41fa5a80-9199-480e-8a83-082ca5498804"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Input"",
-                    ""action"": ""PrimaryButton"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3832e0fc-9570-49f5-91e7-73d3ccaf3133"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Input"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -206,7 +252,7 @@ namespace Gameplay.Input
             ]
         },
         {
-            ""name"": ""Touch"",
+            ""name"": ""GameControls"",
             ""id"": ""f31d8c43-9ab8-4345-9727-67c048c8aca9"",
             ""actions"": [
                 {
@@ -258,19 +304,18 @@ namespace Gameplay.Input
         }
     ]
 }");
-            // Keyboard
-            m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
-            m_Keyboard_MoveKeys = m_Keyboard.FindAction("MoveKeys", throwIfNotFound: true);
-            // Mouse
-            m_Mouse = asset.FindActionMap("Mouse", throwIfNotFound: true);
-            m_Mouse_PointerPosition = m_Mouse.FindAction("PointerPosition", throwIfNotFound: true);
-            m_Mouse_PointerPositionDelta = m_Mouse.FindAction("PointerPositionDelta", throwIfNotFound: true);
-            m_Mouse_PrimaryButton = m_Mouse.FindAction("PrimaryButton", throwIfNotFound: true);
-            m_Mouse_SecondaryButton = m_Mouse.FindAction("SecondaryButton", throwIfNotFound: true);
-            m_Mouse_MiddleButton = m_Mouse.FindAction("MiddleButton", throwIfNotFound: true);
-            // Touch
-            m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
-            m_Touch_TouchPress = m_Touch.FindAction("TouchPress", throwIfNotFound: true);
+            // Moving
+            m_Moving = asset.FindActionMap("Moving", throwIfNotFound: true);
+            m_Moving_MoveKeys = m_Moving.FindAction("MoveKeys", throwIfNotFound: true);
+            m_Moving_PointerPosition = m_Moving.FindAction("PointerPosition", throwIfNotFound: true);
+            // Shooting
+            m_Shooting = asset.FindActionMap("Shooting", throwIfNotFound: true);
+            m_Shooting_Shoot = m_Shooting.FindAction("Shoot", throwIfNotFound: true);
+            m_Shooting_SecondaryButton = m_Shooting.FindAction("SecondaryButton", throwIfNotFound: true);
+            m_Shooting_MiddleButton = m_Shooting.FindAction("MiddleButton", throwIfNotFound: true);
+            // GameControls
+            m_GameControls = asset.FindActionMap("GameControls", throwIfNotFound: true);
+            m_GameControls_TouchPress = m_GameControls.FindAction("TouchPress", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -327,93 +372,85 @@ namespace Gameplay.Input
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // Keyboard
-        private readonly InputActionMap m_Keyboard;
-        private IKeyboardActions m_KeyboardActionsCallbackInterface;
-        private readonly InputAction m_Keyboard_MoveKeys;
-        public struct KeyboardActions
+        // Moving
+        private readonly InputActionMap m_Moving;
+        private IMovingActions m_MovingActionsCallbackInterface;
+        private readonly InputAction m_Moving_MoveKeys;
+        private readonly InputAction m_Moving_PointerPosition;
+        public struct MovingActions
         {
             private @UserInputs m_Wrapper;
-            public KeyboardActions(@UserInputs wrapper) { m_Wrapper = wrapper; }
-            public InputAction @MoveKeys => m_Wrapper.m_Keyboard_MoveKeys;
-            public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
+            public MovingActions(@UserInputs wrapper) { m_Wrapper = wrapper; }
+            public InputAction @MoveKeys => m_Wrapper.m_Moving_MoveKeys;
+            public InputAction @PointerPosition => m_Wrapper.m_Moving_PointerPosition;
+            public InputActionMap Get() { return m_Wrapper.m_Moving; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(KeyboardActions set) { return set.Get(); }
-            public void SetCallbacks(IKeyboardActions instance)
+            public static implicit operator InputActionMap(MovingActions set) { return set.Get(); }
+            public void SetCallbacks(IMovingActions instance)
             {
-                if (m_Wrapper.m_KeyboardActionsCallbackInterface != null)
+                if (m_Wrapper.m_MovingActionsCallbackInterface != null)
                 {
-                    @MoveKeys.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnMoveKeys;
-                    @MoveKeys.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnMoveKeys;
-                    @MoveKeys.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnMoveKeys;
+                    @MoveKeys.started -= m_Wrapper.m_MovingActionsCallbackInterface.OnMoveKeys;
+                    @MoveKeys.performed -= m_Wrapper.m_MovingActionsCallbackInterface.OnMoveKeys;
+                    @MoveKeys.canceled -= m_Wrapper.m_MovingActionsCallbackInterface.OnMoveKeys;
+                    @PointerPosition.started -= m_Wrapper.m_MovingActionsCallbackInterface.OnPointerPosition;
+                    @PointerPosition.performed -= m_Wrapper.m_MovingActionsCallbackInterface.OnPointerPosition;
+                    @PointerPosition.canceled -= m_Wrapper.m_MovingActionsCallbackInterface.OnPointerPosition;
                 }
-                m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
+                m_Wrapper.m_MovingActionsCallbackInterface = instance;
                 if (instance != null)
                 {
                     @MoveKeys.started += instance.OnMoveKeys;
                     @MoveKeys.performed += instance.OnMoveKeys;
                     @MoveKeys.canceled += instance.OnMoveKeys;
-                }
-            }
-        }
-        public KeyboardActions @Keyboard => new KeyboardActions(this);
-
-        // Mouse
-        private readonly InputActionMap m_Mouse;
-        private IMouseActions m_MouseActionsCallbackInterface;
-        private readonly InputAction m_Mouse_PointerPosition;
-        private readonly InputAction m_Mouse_PointerPositionDelta;
-        private readonly InputAction m_Mouse_PrimaryButton;
-        private readonly InputAction m_Mouse_SecondaryButton;
-        private readonly InputAction m_Mouse_MiddleButton;
-        public struct MouseActions
-        {
-            private @UserInputs m_Wrapper;
-            public MouseActions(@UserInputs wrapper) { m_Wrapper = wrapper; }
-            public InputAction @PointerPosition => m_Wrapper.m_Mouse_PointerPosition;
-            public InputAction @PointerPositionDelta => m_Wrapper.m_Mouse_PointerPositionDelta;
-            public InputAction @PrimaryButton => m_Wrapper.m_Mouse_PrimaryButton;
-            public InputAction @SecondaryButton => m_Wrapper.m_Mouse_SecondaryButton;
-            public InputAction @MiddleButton => m_Wrapper.m_Mouse_MiddleButton;
-            public InputActionMap Get() { return m_Wrapper.m_Mouse; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
-            public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(MouseActions set) { return set.Get(); }
-            public void SetCallbacks(IMouseActions instance)
-            {
-                if (m_Wrapper.m_MouseActionsCallbackInterface != null)
-                {
-                    @PointerPosition.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnPointerPosition;
-                    @PointerPosition.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnPointerPosition;
-                    @PointerPosition.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnPointerPosition;
-                    @PointerPositionDelta.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnPointerPositionDelta;
-                    @PointerPositionDelta.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnPointerPositionDelta;
-                    @PointerPositionDelta.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnPointerPositionDelta;
-                    @PrimaryButton.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnPrimaryButton;
-                    @PrimaryButton.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnPrimaryButton;
-                    @PrimaryButton.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnPrimaryButton;
-                    @SecondaryButton.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnSecondaryButton;
-                    @SecondaryButton.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnSecondaryButton;
-                    @SecondaryButton.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnSecondaryButton;
-                    @MiddleButton.started -= m_Wrapper.m_MouseActionsCallbackInterface.OnMiddleButton;
-                    @MiddleButton.performed -= m_Wrapper.m_MouseActionsCallbackInterface.OnMiddleButton;
-                    @MiddleButton.canceled -= m_Wrapper.m_MouseActionsCallbackInterface.OnMiddleButton;
-                }
-                m_Wrapper.m_MouseActionsCallbackInterface = instance;
-                if (instance != null)
-                {
                     @PointerPosition.started += instance.OnPointerPosition;
                     @PointerPosition.performed += instance.OnPointerPosition;
                     @PointerPosition.canceled += instance.OnPointerPosition;
-                    @PointerPositionDelta.started += instance.OnPointerPositionDelta;
-                    @PointerPositionDelta.performed += instance.OnPointerPositionDelta;
-                    @PointerPositionDelta.canceled += instance.OnPointerPositionDelta;
-                    @PrimaryButton.started += instance.OnPrimaryButton;
-                    @PrimaryButton.performed += instance.OnPrimaryButton;
-                    @PrimaryButton.canceled += instance.OnPrimaryButton;
+                }
+            }
+        }
+        public MovingActions @Moving => new MovingActions(this);
+
+        // Shooting
+        private readonly InputActionMap m_Shooting;
+        private IShootingActions m_ShootingActionsCallbackInterface;
+        private readonly InputAction m_Shooting_Shoot;
+        private readonly InputAction m_Shooting_SecondaryButton;
+        private readonly InputAction m_Shooting_MiddleButton;
+        public struct ShootingActions
+        {
+            private @UserInputs m_Wrapper;
+            public ShootingActions(@UserInputs wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Shoot => m_Wrapper.m_Shooting_Shoot;
+            public InputAction @SecondaryButton => m_Wrapper.m_Shooting_SecondaryButton;
+            public InputAction @MiddleButton => m_Wrapper.m_Shooting_MiddleButton;
+            public InputActionMap Get() { return m_Wrapper.m_Shooting; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(ShootingActions set) { return set.Get(); }
+            public void SetCallbacks(IShootingActions instance)
+            {
+                if (m_Wrapper.m_ShootingActionsCallbackInterface != null)
+                {
+                    @Shoot.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShoot;
+                    @Shoot.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShoot;
+                    @Shoot.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShoot;
+                    @SecondaryButton.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnSecondaryButton;
+                    @SecondaryButton.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnSecondaryButton;
+                    @SecondaryButton.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnSecondaryButton;
+                    @MiddleButton.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnMiddleButton;
+                    @MiddleButton.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnMiddleButton;
+                    @MiddleButton.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnMiddleButton;
+                }
+                m_Wrapper.m_ShootingActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Shoot.started += instance.OnShoot;
+                    @Shoot.performed += instance.OnShoot;
+                    @Shoot.canceled += instance.OnShoot;
                     @SecondaryButton.started += instance.OnSecondaryButton;
                     @SecondaryButton.performed += instance.OnSecondaryButton;
                     @SecondaryButton.canceled += instance.OnSecondaryButton;
@@ -423,31 +460,31 @@ namespace Gameplay.Input
                 }
             }
         }
-        public MouseActions @Mouse => new MouseActions(this);
+        public ShootingActions @Shooting => new ShootingActions(this);
 
-        // Touch
-        private readonly InputActionMap m_Touch;
-        private ITouchActions m_TouchActionsCallbackInterface;
-        private readonly InputAction m_Touch_TouchPress;
-        public struct TouchActions
+        // GameControls
+        private readonly InputActionMap m_GameControls;
+        private IGameControlsActions m_GameControlsActionsCallbackInterface;
+        private readonly InputAction m_GameControls_TouchPress;
+        public struct GameControlsActions
         {
             private @UserInputs m_Wrapper;
-            public TouchActions(@UserInputs wrapper) { m_Wrapper = wrapper; }
-            public InputAction @TouchPress => m_Wrapper.m_Touch_TouchPress;
-            public InputActionMap Get() { return m_Wrapper.m_Touch; }
+            public GameControlsActions(@UserInputs wrapper) { m_Wrapper = wrapper; }
+            public InputAction @TouchPress => m_Wrapper.m_GameControls_TouchPress;
+            public InputActionMap Get() { return m_Wrapper.m_GameControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(TouchActions set) { return set.Get(); }
-            public void SetCallbacks(ITouchActions instance)
+            public static implicit operator InputActionMap(GameControlsActions set) { return set.Get(); }
+            public void SetCallbacks(IGameControlsActions instance)
             {
-                if (m_Wrapper.m_TouchActionsCallbackInterface != null)
+                if (m_Wrapper.m_GameControlsActionsCallbackInterface != null)
                 {
-                    @TouchPress.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnTouchPress;
-                    @TouchPress.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnTouchPress;
-                    @TouchPress.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnTouchPress;
+                    @TouchPress.started -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnTouchPress;
+                    @TouchPress.performed -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnTouchPress;
+                    @TouchPress.canceled -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnTouchPress;
                 }
-                m_Wrapper.m_TouchActionsCallbackInterface = instance;
+                m_Wrapper.m_GameControlsActionsCallbackInterface = instance;
                 if (instance != null)
                 {
                     @TouchPress.started += instance.OnTouchPress;
@@ -456,7 +493,7 @@ namespace Gameplay.Input
                 }
             }
         }
-        public TouchActions @Touch => new TouchActions(this);
+        public GameControlsActions @GameControls => new GameControlsActions(this);
         private int m_InputSchemeIndex = -1;
         public InputControlScheme InputScheme
         {
@@ -466,19 +503,18 @@ namespace Gameplay.Input
                 return asset.controlSchemes[m_InputSchemeIndex];
             }
         }
-        public interface IKeyboardActions
+        public interface IMovingActions
         {
             void OnMoveKeys(InputAction.CallbackContext context);
-        }
-        public interface IMouseActions
-        {
             void OnPointerPosition(InputAction.CallbackContext context);
-            void OnPointerPositionDelta(InputAction.CallbackContext context);
-            void OnPrimaryButton(InputAction.CallbackContext context);
+        }
+        public interface IShootingActions
+        {
+            void OnShoot(InputAction.CallbackContext context);
             void OnSecondaryButton(InputAction.CallbackContext context);
             void OnMiddleButton(InputAction.CallbackContext context);
         }
-        public interface ITouchActions
+        public interface IGameControlsActions
         {
             void OnTouchPress(InputAction.CallbackContext context);
         }

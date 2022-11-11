@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a546d144fbe5247a6f2fcc6a77798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMoveSpeed: 5
-  maxMoveSpeed: 10
+  minMoveSpeed: 10
+  maxMoveSpeed: 15
   moveSpeed: 0
   rotateSpeed: 0
   moveDirection: {x: 0, y: 0}

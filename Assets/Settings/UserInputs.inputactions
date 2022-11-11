@@ -2,13 +2,22 @@
     "name": "UserInputs",
     "maps": [
         {
-            "name": "Keyboard",
+            "name": "Moving",
             "id": "7827b0e3-9066-4555-a9d9-a12d1c06dadb",
             "actions": [
                 {
                     "name": "MoveKeys",
                     "type": "Value",
                     "id": "2c1d897d-c6ca-4b91-b061-840aba0c2c20",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PointerPosition",
+                    "type": "Value",
+                    "id": "584ce157-4e3f-4482-a40e-6c2f872ecb85",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -70,33 +79,81 @@
                     "action": "MoveKeys",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrows",
+                    "id": "402c24bb-858a-4835-a5fc-67abd23dc38b",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveKeys",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "14928281-15e3-400d-8c2f-be02d747414b",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Input",
+                    "action": "MoveKeys",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "544337de-1ae4-42c9-815a-8a1b82436d6f",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Input",
+                    "action": "MoveKeys",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "5eeac92a-c93b-4b61-99dd-2167ad1c65ea",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Input",
+                    "action": "MoveKeys",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d9b31360-100c-4976-bb7b-8b113ef0ca7f",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Input",
+                    "action": "MoveKeys",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b0ab661a-9fdb-4399-9ab9-a4787da2c173",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Input",
+                    "action": "PointerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Mouse",
+            "name": "Shooting",
             "id": "6d090fe6-2110-47c1-a3fa-e5a25835e777",
             "actions": [
                 {
-                    "name": "PointerPosition",
-                    "type": "Value",
-                    "id": "eeddbc36-967d-4996-9a83-68f3af94af76",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "PointerPositionDelta",
-                    "type": "Value",
-                    "id": "24a144f5-132a-4890-a0c2-799d72983093",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "PrimaryButton",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "26026e0a-d0c5-41d9-8c2e-56df7e0b466e",
                     "expectedControlType": "Button",
@@ -126,34 +183,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "fb7515ba-f910-453f-9a50-a97ce6df793c",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Input",
-                    "action": "PointerPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "04116c3b-604b-45e2-acf3-a5358707bd10",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Input",
-                    "action": "PointerPositionDelta",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "41fa5a80-9199-480e-8a83-082ca5498804",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Input",
-                    "action": "PrimaryButton",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3832e0fc-9570-49f5-91e7-73d3ccaf3133",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Input",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -182,7 +228,7 @@
             ]
         },
         {
-            "name": "Touch",
+            "name": "GameControls",
             "id": "f31d8c43-9ab8-4345-9727-67c048c8aca9",
             "actions": [
                 {
