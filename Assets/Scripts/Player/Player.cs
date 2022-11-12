@@ -71,27 +71,22 @@ namespace Gameplay.GamePlayer
 
         private void PositionLimits()
         {
-            //float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
-            //float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
-            
-                //Vector3 screenPosition = transform.position;
-            
-            if (transform.position.x > 12.5) 
+            float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
+            float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
+
+            Vector3 playerPosition = transform.position;
+
+            if(playerPosition.x > positionX || playerPosition.x < positionX)
             {
-                transform.position = new Vector2(-12.5f,transform.position.y);
+                playerPosition.x = -playerPosition.x;
             }
-            else if (transform.position.x < -12.5f)
+
+            if(playerPosition.y > positionY || playerPosition.y < positionY)
             {
-                transform.position = new Vector2(12.5f ,transform.position.y);
+                playerPosition.y = -playerPosition.y;
             }
-            else if (transform.position.y > 8) 
-            {
-                transform.position = new Vector2(transform.position.x, -8);
-            }
-            else if (transform.position.x < -Values.GameValues.SCREEN_SIZE_Y / 2)
-            {
-                transform.position = new Vector2(transform.position.x, 8);
-            }
+
+            transform.position = playerPosition;
         }
 
         private bool IsVisible()

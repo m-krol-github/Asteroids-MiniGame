@@ -16,7 +16,9 @@ MonoBehaviour:
   - {fileID: 741377150204384398, guid: 34827bfcbaad4cd448cb12012aebe046, type: 3}
   - {fileID: 5342221253604209628, guid: 3db59679fcb8a0544b8b9d1af03b274b, type: 3}
   - {fileID: 599328880721689033, guid: de4d064cb498ba54dbb99fa09eb89b56, type: 3}
-  asteroidTypeLarge: {fileID: 741377150204384398, guid: 34827bfcbaad4cd448cb12012aebe046,
+  asteroidTypeLarge: {fileID: 36684431241806964, guid: 34827bfcbaad4cd448cb12012aebe046,
     type: 3}
-  asteroidTypeMedium: {fileID: 0}
-  asteroidTypeSmall: {fileID: 0}
+  asteroidTypeMedium: {fileID: 4671857667208055973, guid: 3db59679fcb8a0544b8b9d1af03b274b,
+    type: 3}
+  asteroidTypeSmall: {fileID: 4543643523923512256, guid: de4d064cb498ba54dbb99fa09eb89b56,
+    type: 3}

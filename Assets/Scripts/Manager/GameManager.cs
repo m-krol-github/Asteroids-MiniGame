@@ -11,9 +11,11 @@ namespace Gameplay
     {
         [SerializeField] private UIGameplay _gameplayUI;
         public UIGameplay UIGameplay => _gameplayUI;
+        
+        [SerializeField] private LevelsManager _levels;
+        public LevelsManager Levels => _levels;
 
         [SerializeField] private PlayerManager _playerManager;
-        [SerializeField] private AsteroidsManager _asteroidsManager;
 
         [SerializeField] private float screenSizeY;
         [SerializeField] private float screenSizeX;
@@ -26,6 +28,7 @@ namespace Gameplay
 
             _gameplayUI.InitGameplay(this);
             _playerManager.InitPlayerManager(this);
+            _levels.Init(this);
 
             mainCam = Camera.main;
             Debug.Log("GameInit");
@@ -33,8 +36,12 @@ namespace Gameplay
                 
         private void Update()
         {
-
+            
         }
 
+        public void GameOver()
+        {
+
+        }
     }
 }

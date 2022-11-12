@@ -7,8 +7,8 @@ namespace Gameplay.Obstacles
     {
         public BaseAsteroid[] asteroids;
 
-        public LargeAsteroid asteroidTypeLarge;
-        public MediumAsteroid asteroidTypeMedium;
-        public SmallAsteroid asteroidTypeSmall;
+        public GameObject asteroidTypeLarge;
+        public GameObject asteroidTypeMedium;
+        public GameObject asteroidTypeSmall;
     }
 }

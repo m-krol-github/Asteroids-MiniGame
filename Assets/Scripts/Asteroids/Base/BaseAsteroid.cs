@@ -36,6 +36,7 @@ namespace Gameplay.Obstacles
             asteroidRenderer = GetComponent<SpriteRenderer>();
         }
 
+
         protected void OnEnable()
         {
 
@@ -59,6 +60,42 @@ namespace Gameplay.Obstacles
             rb.AddForce(direction * speed);
         }
 
+        protected void Update()
+        {
+            PositionLimits();
+        }
+
+        private void PositionLimits()
+        {
+            float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
+            float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
+
+
+            //Debug.Log(positionX.ToString() + " " + positionY.ToString() + " ");
+            //Vector3 screenPosition = transform.position;
+
+            if (transform.position.x > 12)
+            {
+                transform.position = new Vector2(-12, transform.position.y);
+            }
+
+            else if (transform.position.x < -12)
+            {
+                transform.position = new Vector2(12, transform.position.y);
+            }
+
+            else if (transform.position.y > 7.5f)
+            {
+                transform.position = new Vector2(transform.position.x, -7.5f);
+            }
+
+            else if (transform.position.y < -7.5)
+            {
+                transform.position = new Vector2(transform.position.x, 7.5f);
+            }
+
+        }
+
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Bullet"))
@@ -66,6 +103,8 @@ namespace Gameplay.Obstacles
                 PoolManager.Instance.ReturnObject(collision.gameObject, 0f);
                 
                 PoolManager.Instance.ReturnObject(this.gameObject, 0f);
+
+                GameManager.Instance.Levels.AsteroidHit(this.gameObject);
             }
 
             if (collision.gameObject.CompareTag("Asteroid"))

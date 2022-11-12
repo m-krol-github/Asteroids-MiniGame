@@ -317,8 +317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameplayUI: {fileID: 2016764314}
+  _levels: {fileID: 1162444851}
   _playerManager: {fileID: 2058862919}
-  _asteroidsManager: {fileID: 1162444851}
   screenSizeY: 0
   screenSizeX: 0
 --- !u!1 &351695139
@@ -1561,7 +1561,7 @@ GameObject:
   - component: {fileID: 1162444850}
   - component: {fileID: 1162444851}
   m_Layer: 0
-  m_Name: AsteroidsManager
+  m_Name: LevelsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1594,11 +1594,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9814d7098cdb3c34daf6cea7f828d84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnDistance: 7
+  levels:
+  - {fileID: 11400000, guid: 51d78224d375c584890c0b5b38e00840, type: 2}
+  - {fileID: 11400000, guid: cc02dff01495c6f4d9bdb6b4ee19bdbc, type: 2}
+  - {fileID: 11400000, guid: 7959dbe4b96df0e4a902a51e655ab183, type: 2}
   _pooling: {fileID: 1034100764}
   _types: {fileID: 11400000, guid: e7f15d1b675dc584da9723a7243bf38d, type: 2}
-  spawnDistance: 7
-  minNumber: 35
-  maxNumber: 40
 --- !u!1 &1522529956
 GameObject:
   m_ObjectHideFlags: 0
