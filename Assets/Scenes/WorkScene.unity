@@ -319,8 +319,6 @@ MonoBehaviour:
   _gameplayUI: {fileID: 2016764314}
   _levels: {fileID: 1162444851}
   _playerManager: {fileID: 2058862919}
-  screenSizeY: 0
-  screenSizeX: 0
 --- !u!1 &351695139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2092656490}
-  livesText: {fileID: 1009202404}
+  lifesText: {fileID: 1009202404}
   levelText: {fileID: 351695141}
 --- !u!1 &1034100762
 GameObject:
@@ -1531,22 +1529,18 @@ MonoBehaviour:
   poolItems:
   - poolItem: {fileID: 36684431241806964, guid: 34827bfcbaad4cd448cb12012aebe046,
       type: 3}
-    itemName: largeAsteroid
     poolAmount: 10
     growable: 1
   - poolItem: {fileID: 4671857667208055973, guid: 3db59679fcb8a0544b8b9d1af03b274b,
       type: 3}
-    itemName: mediumAsteroid
     poolAmount: 10
     growable: 1
   - poolItem: {fileID: 4543643523923512256, guid: de4d064cb498ba54dbb99fa09eb89b56,
       type: 3}
-    itemName: smallAsteroid
     poolAmount: 10
     growable: 1
   - poolItem: {fileID: 5639803573328974809, guid: f10003e755139804a852d71d61b8bccd,
       type: 3}
-    itemName: basicBullet
     poolAmount: 10
     growable: 1
   poolParent: {fileID: 0}
@@ -1601,9 +1595,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 51d78224d375c584890c0b5b38e00840, type: 2}
   - {fileID: 11400000, guid: cc02dff01495c6f4d9bdb6b4ee19bdbc, type: 2}
   - {fileID: 11400000, guid: 7959dbe4b96df0e4a902a51e655ab183, type: 2}
+  - {fileID: 11400000, guid: 8b56260b3e8cc3b4a815817fc142eab3, type: 2}
+  - {fileID: 11400000, guid: f51b3114126d11b43a0497b90100768f, type: 2}
+  - {fileID: 11400000, guid: ab76431e0a9734144ba6003107fd5d19, type: 2}
+  - {fileID: 11400000, guid: 522878d2c84010045b8b0ad85ff53e10, type: 2}
+  - {fileID: 11400000, guid: 3443d052559704b488dc2d93d1dc4fc0, type: 2}
+  - {fileID: 11400000, guid: 06912fe231667b9439245ccafabd2a5f, type: 2}
+  - {fileID: 11400000, guid: 2e79a6ea2628128459dee8babd4cde00, type: 2}
   _pooling: {fileID: 1034100764}
   _types: {fileID: 11400000, guid: e7f15d1b675dc584da9723a7243bf38d, type: 2}
-  totalAsteroids: []
 --- !u!1 &1522529956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,7 +2305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playgamePlayer: {fileID: 0}
   playerSpeed: 200
-  playerLives: 3
   _player: {fileID: 648898607484088374, guid: da6d0eab8483a714892040198a54931d, type: 3}
   playerStartPoint: {fileID: 785306157}
   _pooling: {fileID: 1034100764}

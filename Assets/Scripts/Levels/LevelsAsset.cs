@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class LevelsAsset : ScriptableObject
 {
-    public int asteroidsNumber;
+    public int asteroidsNumberLarge;
+    public int asteroidsNumberMedium;
+    public int asteroidsNumberSmall;
 }

@@ -6,7 +6,6 @@ namespace Gameplay.Pool
     public sealed class PoolItem 
     {
         public GameObject poolItem;
-        public string itemName;
         public int poolAmount;
         public bool growable;
     }

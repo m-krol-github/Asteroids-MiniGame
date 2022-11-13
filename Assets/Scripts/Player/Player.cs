@@ -63,9 +63,6 @@ namespace Gameplay.GamePlayer
 
             _moveRoation.UpdateRotation(mousePointerPosition);
 
-            if (hp <= 0)
-                LifeLost();
-
             PositionLimits();
         }
 
@@ -113,15 +110,17 @@ namespace Gameplay.GamePlayer
             yield return null;
         }
 
-        public void AsteroidCollision(int cost)
+        public void AsteroidCollision()
         {
-            hp -= cost;
+            col.enabled = false;
+
+            _manager.UIGameplay.UIGameInfo.TakeLife(1);
+            _manager.PlayerManager.PlayerDispatch();
+
+            Destroy(this.gameObject);
         }
 
-        private void LifeLost()
-        {
-            
-        }
+
 
         private void OnDisable()
         {

@@ -1,5 +1,5 @@
 
 public interface IAsteroidCollision
 {
-    void AsteroidCollision(int cost);
+    void AsteroidCollision();
 }

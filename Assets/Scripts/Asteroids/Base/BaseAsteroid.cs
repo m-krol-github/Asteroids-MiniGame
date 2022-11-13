@@ -1,3 +1,4 @@
+using Gameplay.GamePlayer;
 using Gameplay.Pool;
 
 using System.Collections;
@@ -96,9 +97,6 @@ namespace Gameplay.Obstacles
             if (collision.gameObject.CompareTag("Bullet"))
             {
                 PoolManager.Instance.ReturnObject(collision.gameObject, 0f);
-                
-                PoolManager.Instance.ReturnObject(this.gameObject, 0f);
-
                 GameManager.Instance.Levels.AsteroidHit(this.gameObject);
             }
 
@@ -107,6 +105,7 @@ namespace Gameplay.Obstacles
                 Vector2 dir = new Vector2(Random.Range(-1f, 1f),Random.Range(-1f,1f));
                 rb.AddForce(dir * moveSpeed, ForceMode2D.Force);
             }
+
         }
     }
 }

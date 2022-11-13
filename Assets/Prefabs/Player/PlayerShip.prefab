@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8775608783576368511}
   m_Layer: 0
   m_Name: PlayerShip
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   _rotateSpeed: 0
   _shootForce: 25
   rb: {fileID: 7825684475245993881}
-  col: {fileID: 0}
+  col: {fileID: 5305319679272706933}
   hp: 0
   currentDirection: {x: 0, y: 0}
   moveDirection: {x: 0, y: 0}

@@ -9,11 +9,10 @@ namespace Gameplay.GamePlayer
     {
         [Header("InGame Player(null in editor)"), SerializeField]
         private Player playgamePlayer;
-        
+
         [Header("Player InGame Properties")]
         [Space]
         [SerializeField] private float playerSpeed;
-        [SerializeField] private int playerLives;
         [Space]
         [Header("Player Ship Prefab")]
         [SerializeField] private Player _player;
@@ -30,11 +29,22 @@ namespace Gameplay.GamePlayer
             PlayerDispatch();
         }
 
-        private void PlayerDispatch()
+        public void PlayerDispatch()
         {
+            if (_manager.PlayerLifes == 0)
+            {
+                _manager.GameOver();
+                return;
+            }
+
+            playgamePlayer = null;
+
             Player player = Instantiate(_player, playerStartPoint.position, transform.rotation);
             playgamePlayer = player;
             player.PlayerInit(_manager, _pooling, playerSpeed);
+
+            //take life from totalNumber of lifes
+            _manager.PlayerLifes--;
         }
         
         

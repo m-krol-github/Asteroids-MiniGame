@@ -11,7 +11,7 @@ namespace Gameplay.Obstacles
     {
         [field: SerializeField] public int CurrentLevel { get; set; }
 
-        public float minSpawnDistance = 12f;
+        public float minSpawnDistance = 3f;
         public float maxSpawnDistance = 12f;
 
         [SerializeField] private LevelsAsset[] levels;
@@ -19,11 +19,13 @@ namespace Gameplay.Obstacles
         [SerializeField] private PoolManager _pooling;
         [SerializeField] private AsteroidsTypes _types;
 
-        private int asteroidsNumber;
+        private int asteroidsNumberLarge;
+        private int asteroidsNumberMedium;
+        private int asteroidNumberSmall;
 
         private GameManager manager;
 
-        public List<GameObject> totalAsteroids = new();
+        private List<GameObject> totalAsteroids = new();
 
         public void Init(GameManager manager)
         {
@@ -38,17 +40,19 @@ namespace Gameplay.Obstacles
 
         private void StartLevel()
         {
-            this.asteroidsNumber = levels[CurrentLevel].asteroidsNumber;
+            this.asteroidsNumberLarge = levels[CurrentLevel].asteroidsNumberLarge;
+            this.asteroidsNumberMedium = levels[CurrentLevel].asteroidsNumberMedium;
+            this.asteroidNumberSmall = levels[CurrentLevel].asteroidsNumberSmall;
 
-            StartCoroutine(SpawnAsteroids(asteroidsNumber, _types.asteroids[0].gameObject));
-            StartCoroutine(SpawnAsteroids(asteroidsNumber, _types.asteroids[1].gameObject));
-            StartCoroutine(SpawnAsteroids(asteroidsNumber, _types.asteroids[2].gameObject));
+            StartCoroutine(SpawnAsteroids(asteroidsNumberLarge, _types.asteroidTypeLarge));
+            StartCoroutine(SpawnAsteroids(asteroidsNumberMedium, _types.asteroidTypeMedium));
+            StartCoroutine(SpawnAsteroids(asteroidNumberSmall, _types.asteroidTypeSmall));
         }
 
         private IEnumerator SpawnAsteroids(int n, GameObject asteroid)
         {
 
-            for (int i = 0; i < asteroidsNumber; i++)
+            for (int i = 0; i < n; i++)
             {
                 float spawnDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
                 Vector3 randomPos = Random.insideUnitSphere * spawnDistance;
@@ -79,6 +83,8 @@ namespace Gameplay.Obstacles
 
         public void AsteroidHit(GameObject aster)
         {
+            PoolManager.Instance.ReturnObject(aster, 0f);
+
             totalAsteroids.Remove(aster);
 
             if (totalAsteroids.Count == 0)

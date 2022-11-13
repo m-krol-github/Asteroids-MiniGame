@@ -2,7 +2,11 @@ using System;
 using Gameplay.GamePlayer;
 using Gameplay.Obstacles;
 using Gameplay.UI;
+
+using MainMenu;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
@@ -16,15 +20,16 @@ namespace Gameplay
         public LevelsManager Levels => _levels;
 
         [SerializeField] private PlayerManager _playerManager;
+        public PlayerManager PlayerManager => _playerManager;
 
-        [SerializeField] private float screenSizeY;
-        [SerializeField] private float screenSizeX;
+        public int PlayerLifes { get; set; }
 
         private Camera mainCam;
         
         protected override void Awake()
         {
             base.Awake();
+            PlayerLifes = 3;
 
             _gameplayUI.InitGameplay(this);
             _playerManager.InitPlayerManager(this);
@@ -36,12 +41,13 @@ namespace Gameplay
                 
         private void Update()
         {
-            
+            Debug.Log(PlayerLifes.ToString());
         }
 
         public void GameOver()
         {
-
+            SceneLoadManager.Instance.LoadScene(SceneLoadManager.SCENE_EXITGAME);
+            Debug.Log("GameOver");
         }
     }
 }
