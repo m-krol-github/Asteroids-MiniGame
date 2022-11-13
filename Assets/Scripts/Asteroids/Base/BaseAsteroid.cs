@@ -11,10 +11,6 @@ namespace Gameplay.Obstacles
     {
         [SerializeField] protected int scoreForPlayer;
         [Header("Asteroid Move Properties"), Space]
-        [Range(0f, 20f)]
-        [SerializeField] protected float minMoveSpeed;
-        [Range(20f, 45f)]
-        [SerializeField] protected float maxMoveSpeed;
         [SerializeField] protected float moveSpeed;
         [Range(0f, 45f)]
         [SerializeField] protected float trajectoryVariance = 15f;
@@ -56,8 +52,7 @@ namespace Gameplay.Obstacles
 
         protected virtual void SetTrajectory(Vector2 direction)
         {
-            float speed = Random.Range(minMoveSpeed, maxMoveSpeed);
-            rb.AddForce(direction * speed);
+            rb.AddForce(direction * moveSpeed);
         }
 
         protected void Update()
@@ -110,7 +105,7 @@ namespace Gameplay.Obstacles
             if (collision.gameObject.CompareTag("Asteroid"))
             {
                 Vector2 dir = new Vector2(Random.Range(-1f, 1f),Random.Range(-1f,1f));
-                rb.AddForce(dir * minMoveSpeed, ForceMode2D.Force);
+                rb.AddForce(dir * moveSpeed, ForceMode2D.Force);
             }
         }
     }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1428690761759342958}
   m_Layer: 0
   m_Name: LargeAsteroid
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,9 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForPlayer: 100
-  minMoveSpeed: 10
-  maxMoveSpeed: 20
-  moveSpeed: 0
+  moveSpeed: 10
   trajectoryVariance: 15
   asteroidSpriteSet:
   - {fileID: 21300000, guid: 6c5da61ed048e4443be1149064ce9e5d, type: 3}

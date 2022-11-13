@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5342221253604209628}
   m_Layer: 0
   m_Name: MediumAsteroid
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,16 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3549a186f0557649afbcdeee5763067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMoveSpeed: 15
-  maxMoveSpeed: 20
-  moveSpeed: 0
-  rotateSpeed: 0
-  moveDirection: {x: 0, y: 0}
   scoreForPlayer: 200
+  moveSpeed: 20
+  trajectoryVariance: 15
   asteroidSpriteSet:
   - {fileID: 21300000, guid: bef3745353ab43f4499c90c0db16c4f6, type: 3}
   - {fileID: 21300000, guid: 32d56444e0ed9b34daf31f30e51dc7a6, type: 3}
   rb: {fileID: 2000108084056217977}
   col: {fileID: 1732461224235807997}
   asteroidRenderer: {fileID: 6017982477290162623}
-  trajectoryVariance: 15

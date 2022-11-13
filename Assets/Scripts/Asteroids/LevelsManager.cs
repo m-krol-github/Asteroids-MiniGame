@@ -9,83 +9,70 @@ namespace Gameplay.Obstacles
 {
     public sealed class LevelsManager : MonoBehaviour
     {
-        public int CurrentLevel { get; set; }
+        [field: SerializeField] public int CurrentLevel { get; set; }
 
-        public float spawnDistance = 12f;
+        public float minSpawnDistance = 12f;
+        public float maxSpawnDistance = 12f;
 
         [SerializeField] private LevelsAsset[] levels;
 
         [SerializeField] private PoolManager _pooling;
         [SerializeField] private AsteroidsTypes _types;
 
-
-        private int minNumber;
-        private int maxNumber;
-
-        private int astLargeNumber;
-        private int astMediumNumber;
-        private int astSmallNumber;
+        private int asteroidsNumber;
 
         private GameManager manager;
 
-        private List<GameObject> totalAsteroids = new();
+        public List<GameObject> totalAsteroids = new();
 
         public void Init(GameManager manager)
         {
             this.manager = manager;
-
-            this.astLargeNumber = levels[CurrentLevel].astLargeNumber;
-            this.astMediumNumber = levels[CurrentLevel].mediumAsteroidsNumber;
-            this.astSmallNumber = levels[CurrentLevel].smallAsteroidsNumber;
-
-            StartCoroutine( SpawnAsteroids(20));
+            CurrentLevel = 0;
         }
 
-        public void SpawnAsteroids()
+        private void Start()
         {
-            Vector2 spawnDirection = Random.insideUnitCircle.normalized;
-            Vector3 spawnPoint = spawnDirection * spawnDistance;
-
-            spawnPoint += transform.position;
-
-            GameObject aster = null;
-
-            for (int i = 0; i < astSmallNumber; i++)
-            {
-                aster = _pooling.UseObject(_types.asteroids[0].gameObject, spawnPoint, transform.rotation);
-            }
-
-            for (int i = 0; i < astMediumNumber; i++)
-            {
-                aster = _pooling.UseObject(_types.asteroids[1].gameObject, spawnPoint, transform.rotation);
-            }
-
-            for (int i = 0; i < astLargeNumber; i++)
-            {
-                aster = _pooling.UseObject(_types.asteroids[2].gameObject, spawnPoint, transform.rotation);
-            }
-
-            totalAsteroids.Add(aster);
+            StartLevel();
         }
 
-        private IEnumerator SpawnAsteroids(int n)
+        private void StartLevel()
         {
-            Vector2 spawnDirection = Random.insideUnitCircle.normalized;
-            Vector3 spawnPoint = spawnDirection * spawnDistance;
+            this.asteroidsNumber = levels[CurrentLevel].asteroidsNumber;
 
-            // Offset the spawn point by the position of the spawner so its
-            // relative to the spawner location
-            spawnPoint += transform.position;
+            StartCoroutine(SpawnAsteroids(asteroidsNumber, _types.asteroids[0].gameObject));
+            StartCoroutine(SpawnAsteroids(asteroidsNumber, _types.asteroids[1].gameObject));
+            StartCoroutine(SpawnAsteroids(asteroidsNumber, _types.asteroids[2].gameObject));
+        }
 
-            for (int i = 0; i < _types.asteroids.Length; i++)
+        private IEnumerator SpawnAsteroids(int n, GameObject asteroid)
+        {
+
+            for (int i = 0; i < asteroidsNumber; i++)
             {
+                float spawnDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
+                Vector3 randomPos = Random.insideUnitSphere * spawnDistance;
+                randomPos += transform.position;
+                randomPos.y = 0f;
+
+                Vector3 direction = randomPos - transform.position;
+                direction.Normalize();
+
+                float dotProduct = Vector3.Dot(transform.forward, direction);
+                float dotProductAngle = Mathf.Acos(dotProduct / transform.forward.magnitude * direction.magnitude);
+
+                randomPos.x = Mathf.Cos(dotProductAngle) * spawnDistance + transform.position.x;
+                randomPos.y = Mathf.Sin(dotProductAngle * (Random.value > 0.5f ? 1f : -1f)) * spawnDistance + transform.position.y;
+                randomPos.z = transform.position.z;
+
                 //Vector2 pos = Random.insideUnitCircle * 10;
-                _pooling.UseObject(_types.asteroids[i].gameObject, spawnPoint, transform.rotation);
+                GameObject aster = _pooling.UseObject(asteroid, randomPos, transform.rotation);
+                totalAsteroids.Add(aster);
                 n--;
             }
 
             if (n > 0)
-                StartCoroutine(SpawnAsteroids(n));
+                StartCoroutine(SpawnAsteroids(n, asteroid));
 
             yield return null;
         }
@@ -93,17 +80,20 @@ namespace Gameplay.Obstacles
         public void AsteroidHit(GameObject aster)
         {
             totalAsteroids.Remove(aster);
+
+            if (totalAsteroids.Count == 0)
+                LevelComplete();
         }
 
         public void LevelComplete()
         {
             int totalLevels = levels.Length;
-            totalAsteroids.Clear();
 
-            if (totalLevels < CurrentLevel)
+            if (CurrentLevel < totalLevels)
             {
                 CurrentLevel += 1;
                 manager.UIGameplay.UIGameInfo.AddLevel(1);
+                StartLevel();
                 return;
             }
 

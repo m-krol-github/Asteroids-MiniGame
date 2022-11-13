@@ -12,6 +12,8 @@ namespace Gameplay.UI
         public UIGameInfo UIGameInfo => _gameInfo;
 
         [SerializeField] private UIPause _uiPause;
+        public UIPause UIPause => _uiPause;
+
         [SerializeField] private UIGameOver _gameOver;
         
         [SerializeField] private Button pauseButton;

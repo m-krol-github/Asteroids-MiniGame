@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc5d8a478beb4f4580f3cd58142ff2d, type: 3}
   m_Name: Level1 2
   m_EditorClassIdentifier: 
-  astLargeNumber: 10
-  mediumAsteroidsNumber: 10
-  smallAsteroidsNumber: 10
+  asteroidsNumber: 9
