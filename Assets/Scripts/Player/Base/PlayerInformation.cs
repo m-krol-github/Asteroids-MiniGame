@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInformation : MonoBehaviour
+namespace Gameplay.GamePlayer
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu]
+    public class PlayerInformation : ScriptableObject
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public string playerName;
     }
 }

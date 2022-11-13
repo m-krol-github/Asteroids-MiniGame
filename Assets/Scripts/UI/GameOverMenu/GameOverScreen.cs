@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class QGameOverScreen : MonoBehaviour
+public sealed class GameOverScreen : MonoBehaviour
 {
     [SerializeField] private Button menuButton;
     [SerializeField] private Button exitGameButton;
