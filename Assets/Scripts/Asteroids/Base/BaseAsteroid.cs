@@ -8,26 +8,26 @@ using UnityEngine.Pool;
 
 namespace Gameplay.Obstacles
 {
-    public class BaseAsteroid : MonoBehaviour
+    public sealed class BaseAsteroid : MonoBehaviour
     {
-        [SerializeField] protected int scoreForPlayer;
+        [SerializeField] private int scoreForPlayer;
         [Header("Asteroid Move Properties"), Space]
         [Range(1,50)]
-        [SerializeField] protected float moveSpeed;
+        [SerializeField] private float moveSpeed;
         [Range(0f, 45f)]
-        [SerializeField] protected float trajectoryVariance = 15f;
+        [SerializeField] private float trajectoryVariance = 15f;
 
 
         [Header("Asteroid Sprite Set Random"), Space]
-        [SerializeField] protected Sprite[] asteroidSpriteSet;
+        [SerializeField] private Sprite[] asteroidSpriteSet;
 
         [Header("Asteroid Components to fill"), Space]
-        [SerializeField] protected Rigidbody2D rb;
-        [SerializeField] protected Collider2D col;
-        [SerializeField] protected SpriteRenderer asteroidRenderer;
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private Collider2D col;
+        [SerializeField] private SpriteRenderer asteroidRenderer;
 
 
-        protected void Awake()
+        private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<Collider2D>();
@@ -35,7 +35,7 @@ namespace Gameplay.Obstacles
         }
 
 
-        protected void OnEnable()
+        private void OnEnable()
         {
 
             int asteroid = Random.Range(0, asteroidSpriteSet.Length);
@@ -52,12 +52,12 @@ namespace Gameplay.Obstacles
             SetTrajectory(trajectory);
         }
 
-        protected virtual void SetTrajectory(Vector2 direction)
+        private void SetTrajectory(Vector2 direction)
         {
             rb.AddForce(direction * moveSpeed);
         }
 
-        protected void Update()
+        private void Update()
         {
             PositionLimits();
         }
@@ -86,12 +86,13 @@ namespace Gameplay.Obstacles
             transform.position = screenPosition;
         }
 
-        protected virtual void OnCollisionEnter2D(Collision2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Bullet"))
             {
                 PoolManager.Instance.ReturnObject(collision.gameObject, 0f);
                 GameManager.Instance.Levels.AsteroidHit(this.gameObject);
+                GameManager.Instance.UIGameplay.UIGameInfo.AddScore(scoreForPlayer);
             }
 
             if (collision.gameObject.CompareTag("Asteroid"))
@@ -100,6 +101,12 @@ namespace Gameplay.Obstacles
                 rb.AddForce(dir * moveSpeed, ForceMode2D.Force);
             }
 
+            if (collision.gameObject.GetComponent<Player>())
+            {
+                GameManager.Instance.UIGameplay.UIGameInfo.AddScore(100);
+                GameManager.Instance.Levels.AsteroidHit(this.gameObject);
+                collision.gameObject.GetComponent<Player>().AsteroidCollision();
+            }
         }
     }
 }

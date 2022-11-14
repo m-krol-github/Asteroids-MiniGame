@@ -147,11 +147,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4671857667208055973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3549a186f0557649afbcdeee5763067, type: 3}
+  m_Script: {fileID: 11500000, guid: d2405f3dfceeaa245b0660d2d4a7d417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForPlayer: 200
-  moveSpeed: 30.8
+  moveSpeed: 30
   trajectoryVariance: 15
   asteroidSpriteSet:
   - {fileID: 21300000, guid: bef3745353ab43f4499c90c0db16c4f6, type: 3}
