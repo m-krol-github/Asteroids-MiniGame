@@ -89,6 +89,7 @@ namespace Gameplay.Obstacles
                 LevelComplete();
         }
 
+
         public void LevelComplete()
         {
             int totalLevels = levels.Length;

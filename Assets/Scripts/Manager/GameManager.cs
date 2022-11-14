@@ -10,8 +10,13 @@ namespace Gameplay
 
     public sealed class GameManager : Singleton<GameManager>
     {
+        #region REFERENCES
+        
         [Header("Game References"), Space]
-        [SerializeField] private UIGameplay _gameplayUI;
+        [SerializeField] private References references;
+        public References References => references;
+
+        [SerializeField, Space] private UIGameplay _gameplayUI;
         public UIGameplay UIGameplay => _gameplayUI;
         
         [SerializeField] private LevelsManager _levels;
@@ -23,6 +28,10 @@ namespace Gameplay
         public PlayerManager PlayerManager => _playerManager;
 
         [field: SerializeField] public PlayerInformation PlayerInformation { get; private set; }
+
+        #endregion
+
+        public float sizeCamX;
 
         [field: SerializeField] public int PlayerLifes { get; set; }
 
@@ -45,6 +54,11 @@ namespace Gameplay
             _inputs.GameControls.Cancel.performed += (ctx) => PauseUnpause();
 
             Debug.Log("GameInit");
+        }
+
+        private void Update()
+        {
+            sizeCamX = References.GameCamera.pixelWidth;
         }
 
         private void OnEnable()

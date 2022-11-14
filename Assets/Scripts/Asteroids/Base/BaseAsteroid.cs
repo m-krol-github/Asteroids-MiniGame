@@ -33,18 +33,17 @@ namespace Gameplay.Obstacles
 
         private void OnEnable()
         {
-
             int asteroid = Random.Range(0, asteroidSpriteSet.Length);
             asteroidRenderer.sprite = asteroidSpriteSet[asteroid];
 
             transform.eulerAngles = new Vector3(0f, 0f, Random.value * 360f);
 
-            Vector2 spawnDirection = Random.insideUnitCircle.normalized;
+            Vector2 moveDirection = Random.insideUnitCircle.normalized;
 
             float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
-            Vector2 trajectory = rotation * -spawnDirection;
+            Vector2 trajectory = rotation * -moveDirection;
             SetTrajectory(trajectory);
         }
 
