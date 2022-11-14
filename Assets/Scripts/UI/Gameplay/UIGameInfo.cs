@@ -19,9 +19,10 @@ namespace Gameplay.UI
         {
             _manager = manager;
 
-            lifes = 3;
+            lifes = manager.PlayerLifes;
+            level = manager.Levels.CurrentLevel;
+
             score = 0;
-            level = 0;
 
             scoreText.text = score.ToString("D7");
             levelText.text = level.ToString("D2");

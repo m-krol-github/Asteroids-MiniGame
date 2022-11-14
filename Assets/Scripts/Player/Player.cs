@@ -1,35 +1,31 @@
 using Gameplay.Input;
-using UnityEngine.InputSystem;
 using UnityEngine;
-using System;
 using Gameplay.Pool;
 using System.Collections;
-using Gameplay.Weapons;
 
 namespace Gameplay.GamePlayer
 {
 
     public sealed class Player : MonoBehaviour, IAsteroidCollision
     {
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotateSpeed;
-        [SerializeField] private float _shootForce = 25f;
-
+        [Header("Player Components"), Space]
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Collider2D col;
-
-        [SerializeField] private int hp;
-
-        [SerializeField] private Vector2 currentDirection;
-        [SerializeField] private Vector2 moveDirection;
-        [SerializeField] private Vector2 mousePointerPosition;
-
-        [SerializeField] private PlayerMoveAndRotate _moveRoation;
 
         [SerializeField] private GameObject _bullet;
         [SerializeField] private Transform _shootPoint;
 
         [SerializeField] private Renderer _renderer;
+
+        [Header("Player Move"), Space]
+        [SerializeField] private PlayerMoveAndRotate _moveRoation;
+       
+        private float _moveSpeed;
+        private float _shootForce = 25f;
+
+        private Vector2 currentDirection;
+        private Vector2 mousePointerPosition;
+
         private GameManager _manager;
         private PoolManager _pooling;
         private UserInputs _inputs;
@@ -45,13 +41,12 @@ namespace Gameplay.GamePlayer
             _inputs.Enable();
         }
         
-        public void PlayerInit(GameManager manager, PoolManager pooling, float moveSpeed)
+        public void PlayerInit(GameManager manager, PoolManager pooling, float moveSpeed, float shootForce)
         {
             _manager = manager;
             _pooling = pooling;
             _moveSpeed = moveSpeed;
-
-            Values.PlayerValues.IsPlayerInitialized = true;
+            _shootForce = shootForce;
         }
 
         public void Update()
@@ -123,12 +118,9 @@ namespace Gameplay.GamePlayer
             Destroy(this.gameObject);
         }
 
-
-
         private void OnDisable()
         {
             _inputs.Disable();
         }
-
     }
 }

@@ -321,6 +321,7 @@ MonoBehaviour:
   _playerManager: {fileID: 2058862919}
   <PlayerInformation>k__BackingField: {fileID: 11400000, guid: e676c965fee90f04bbe634912e146142,
     type: 2}
+  <PlayerLifes>k__BackingField: 3
 --- !u!1 &351695139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,8 +2579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528266e2909b49449b8cc97e117bff09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playgamePlayer: {fileID: 0}
   playerSpeed: 200
+  bulletShootForce: 19.9
   _player: {fileID: 648898607484088374, guid: da6d0eab8483a714892040198a54931d, type: 3}
   playerStartPoint: {fileID: 785306157}
   _pooling: {fileID: 1034100764}

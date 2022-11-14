@@ -1,5 +1,4 @@
 using Gameplay.Pool;
-
 using UnityEngine;
 
 namespace Gameplay.GamePlayer
@@ -7,20 +6,23 @@ namespace Gameplay.GamePlayer
 
     public sealed class PlayerManager : MonoBehaviour
     {
-        [Header("InGame Player(null in editor)"), SerializeField]
-        private Player playgamePlayer;
 
-        [Header("Player InGame Properties")]
-        [Space]
+        [Header("Player InGame Properties"), Space]
+        [Range(100,300)]
         [SerializeField] private float playerSpeed;
-        [Space]
-        [Header("Player Ship Prefab")]
+        [Range(10,50)]
+        [SerializeField] private float bulletShootForce;
+        
+        [Header("Player Ship Prefab"), Space]
         [SerializeField] private Player _player;
-
         [SerializeField] private Transform playerStartPoint;
 
+        [Space]
+        [Header("Pooling References")]
         [SerializeField] private PoolManager _pooling;
+
         private GameManager _manager;
+        private Player playgamePlayer;
 
         public void InitPlayerManager(GameManager manager)
         {
@@ -31,22 +33,21 @@ namespace Gameplay.GamePlayer
 
         public void PlayerDispatch()
         {
+            if (playgamePlayer != null)
+                Destroy(playgamePlayer.gameObject);
+
             if (_manager.PlayerLifes == 0)
             {
                 _manager.GameOver();
                 return;
             }
 
-            playgamePlayer = null;
-
             Player player = Instantiate(_player, playerStartPoint.position, transform.rotation);
             playgamePlayer = player;
-            player.PlayerInit(_manager, _pooling, playerSpeed);
+            player.PlayerInit(_manager, _pooling, playerSpeed, bulletShootForce);
 
             //take life from totalNumber of lifes
             _manager.PlayerLifes--;
         }
-        
-        
     }
 }

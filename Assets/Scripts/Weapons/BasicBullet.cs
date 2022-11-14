@@ -5,7 +5,6 @@ namespace Gameplay.Weapons
 {
     public sealed class BasicBullet : MonoBehaviour, IReturnToPool
     {
-
         [SerializeField] private float timeToDestroy = 2f;
 
         public void ReturnToPool(PoolManager pooling)

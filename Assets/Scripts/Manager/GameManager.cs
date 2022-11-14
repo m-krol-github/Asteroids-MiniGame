@@ -1,31 +1,30 @@
-using System;
 using Gameplay.GamePlayer;
 using Gameplay.Input;
 using Gameplay.Obstacles;
 using Gameplay.UI;
-
 using MainMenu;
-
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
 
     public sealed class GameManager : Singleton<GameManager>
     {
+        [Header("Game References"), Space]
         [SerializeField] private UIGameplay _gameplayUI;
         public UIGameplay UIGameplay => _gameplayUI;
         
         [SerializeField] private LevelsManager _levels;
         public LevelsManager Levels => _levels;
 
+        [Header("Player References"), Space]
+
         [SerializeField] private PlayerManager _playerManager;
         public PlayerManager PlayerManager => _playerManager;
 
         [field: SerializeField] public PlayerInformation PlayerInformation { get; private set; }
 
-        public int PlayerLifes { get; set; }
+        [field: SerializeField] public int PlayerLifes { get; set; }
 
         public bool IsGamePaused { get; private set; }
 
@@ -35,7 +34,6 @@ namespace Gameplay
         {
             base.Awake();
             
-            PlayerLifes = 3;
             Time.timeScale = 1;
 
             _inputs = new UserInputs();

@@ -1,10 +1,6 @@
 using Gameplay.GamePlayer;
 using Gameplay.Pool;
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace Gameplay.Obstacles
 {
@@ -103,7 +99,8 @@ namespace Gameplay.Obstacles
 
             if (collision.gameObject.GetComponent<Player>())
             {
-                GameManager.Instance.UIGameplay.UIGameInfo.AddScore(100);
+                col.enabled = false;
+                GameManager.Instance.UIGameplay.UIGameInfo.AddScore(scoreForPlayer);
                 GameManager.Instance.Levels.AsteroidHit(this.gameObject);
                 collision.gameObject.GetComponent<Player>().AsteroidCollision();
             }
