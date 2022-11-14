@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gameplay.Obstacles
 {
-    public sealed class BaseAsteroid : MonoBehaviour
+    public sealed class BaseAsteroid : ScreenWrap
     {
         [SerializeField] private int scoreForPlayer;
         [Header("Asteroid Move Properties"), Space]
@@ -51,35 +51,6 @@ namespace Gameplay.Obstacles
         private void SetTrajectory(Vector2 direction)
         {
             rb.AddForce(direction * moveSpeed);
-        }
-
-        private void Update()
-        {
-            PositionLimits();
-        }
-
-        private void PositionLimits()
-        {
-            float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
-            float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
-
-            float posX = Mathf.Abs(positionX);
-            float posY = Mathf.Abs(positionY);
-
-            //Debug.Log(positionX.ToString() + " " + positionY.ToString() + " ");
-            Vector3 screenPosition = transform.position;
-
-            if (transform.position.x > posX || transform.position.x < -posX)
-            {
-                screenPosition.x = -screenPosition.x;
-            }
-
-            if (transform.position.y > posY || transform.position.y < -posY)
-            {
-                screenPosition.y = -screenPosition.y;
-            }
-
-            transform.position = screenPosition;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

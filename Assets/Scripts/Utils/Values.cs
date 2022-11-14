@@ -9,9 +9,4 @@ public static class Values
         public static readonly float SCREEN_SIZE_X = 25f;
         public static readonly float SCREEN_SIZE_Y = 15f;
     }
-
-    public class PlayerValues
-    {
-        public static bool IsPlayerInitialized;
-    }
 }

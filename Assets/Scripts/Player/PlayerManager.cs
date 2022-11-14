@@ -6,7 +6,6 @@ namespace Gameplay.GamePlayer
 
     public sealed class PlayerManager : MonoBehaviour
     {
-
         [Header("Player InGame Properties"), Space]
         [Range(100,300)]
         [SerializeField] private float playerSpeed;

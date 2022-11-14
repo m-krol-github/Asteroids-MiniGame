@@ -6,7 +6,7 @@ using System.Collections;
 namespace Gameplay.GamePlayer
 {
 
-    public sealed class Player : MonoBehaviour, IAsteroidCollision
+    public sealed class Player : ScreenWrap, IAsteroidCollision
     {
         [Header("Player Components"), Space]
         [SerializeField] private Rigidbody2D rb;
@@ -49,39 +49,16 @@ namespace Gameplay.GamePlayer
             _shootForce = shootForce;
         }
 
-        public void Update()
+        protected override void Update()
         {
+            base.Update();
+
             currentDirection = _inputs.Moving.MoveKeys.ReadValue<Vector2>();
             mousePointerPosition = _inputs.Moving.PointerPosition.ReadValue<Vector2>();
 
             _moveRoation.MoveShip(rb, currentDirection, _moveSpeed);
 
             _moveRoation.UpdateRotation(mousePointerPosition);
-
-            PositionLimits();
-        }
-
-        private void PositionLimits()
-        {
-            float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
-            float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
-
-            float posX = Mathf.Abs(positionX);
-            float posY = Mathf.Abs(positionY);
-
-            Vector3 screenPosition = transform.position;
-
-            if (transform.position.x > posX || transform.position.x < -posX)
-            {
-                screenPosition.x = -screenPosition.x;
-            }
-
-            if (transform.position.y > posY || transform.position.y < -posY)
-            {
-                screenPosition.y = -screenPosition.y;
-            }
-
-            transform.position = screenPosition;
         }
 
         private bool IsVisible()
