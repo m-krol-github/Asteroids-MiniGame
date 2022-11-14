@@ -71,19 +71,22 @@ namespace Gameplay.GamePlayer
             float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
             float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
 
-            Vector3 playerPosition = transform.position;
+            float posX = Mathf.Abs(positionX);
+            float posY = Mathf.Abs(positionY);
 
-            if(playerPosition.x > positionX || playerPosition.x < positionX)
+            Vector3 screenPosition = transform.position;
+
+            if (transform.position.x > posX || transform.position.x < -posX)
             {
-                playerPosition.x = -playerPosition.x;
+                screenPosition.x = -screenPosition.x;
             }
 
-            if(playerPosition.y > positionY || playerPosition.y < positionY)
+            if (transform.position.y > posY || transform.position.y < -posY)
             {
-                playerPosition.y = -playerPosition.y;
+                screenPosition.y = -screenPosition.y;
             }
 
-            transform.position = playerPosition;
+            transform.position = screenPosition;
         }
 
         private bool IsVisible()
