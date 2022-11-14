@@ -40,7 +40,7 @@ namespace Gameplay.UI
         {
             pauseButton.onClick.AddListener(() =>
             {
-               _uiPause.PauseUnpause(); 
+               _manager.PauseUnpause(); 
             });
         }
     }

@@ -256,7 +256,7 @@ namespace Gameplay.Input
             ""id"": ""f31d8c43-9ab8-4345-9727-67c048c8aca9"",
             ""actions"": [
                 {
-                    ""name"": ""TouchPress"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""e41bd1f3-8964-49b0-86b2-56a6850dc633"",
                     ""expectedControlType"": ""Button"",
@@ -269,11 +269,11 @@ namespace Gameplay.Input
                 {
                     ""name"": """",
                     ""id"": ""2e9f9c33-62c2-44aa-9129-e706ec348005"",
-                    ""path"": ""<Touchscreen>/Press"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Input"",
-                    ""action"": ""TouchPress"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -315,7 +315,7 @@ namespace Gameplay.Input
             m_Shooting_MiddleButton = m_Shooting.FindAction("MiddleButton", throwIfNotFound: true);
             // GameControls
             m_GameControls = asset.FindActionMap("GameControls", throwIfNotFound: true);
-            m_GameControls_TouchPress = m_GameControls.FindAction("TouchPress", throwIfNotFound: true);
+            m_GameControls_Cancel = m_GameControls.FindAction("Cancel", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -465,12 +465,12 @@ namespace Gameplay.Input
         // GameControls
         private readonly InputActionMap m_GameControls;
         private IGameControlsActions m_GameControlsActionsCallbackInterface;
-        private readonly InputAction m_GameControls_TouchPress;
+        private readonly InputAction m_GameControls_Cancel;
         public struct GameControlsActions
         {
             private @UserInputs m_Wrapper;
             public GameControlsActions(@UserInputs wrapper) { m_Wrapper = wrapper; }
-            public InputAction @TouchPress => m_Wrapper.m_GameControls_TouchPress;
+            public InputAction @Cancel => m_Wrapper.m_GameControls_Cancel;
             public InputActionMap Get() { return m_Wrapper.m_GameControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -480,16 +480,16 @@ namespace Gameplay.Input
             {
                 if (m_Wrapper.m_GameControlsActionsCallbackInterface != null)
                 {
-                    @TouchPress.started -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnTouchPress;
-                    @TouchPress.performed -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnTouchPress;
-                    @TouchPress.canceled -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnTouchPress;
+                    @Cancel.started -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnCancel;
+                    @Cancel.performed -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnCancel;
+                    @Cancel.canceled -= m_Wrapper.m_GameControlsActionsCallbackInterface.OnCancel;
                 }
                 m_Wrapper.m_GameControlsActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @TouchPress.started += instance.OnTouchPress;
-                    @TouchPress.performed += instance.OnTouchPress;
-                    @TouchPress.canceled += instance.OnTouchPress;
+                    @Cancel.started += instance.OnCancel;
+                    @Cancel.performed += instance.OnCancel;
+                    @Cancel.canceled += instance.OnCancel;
                 }
             }
         }
@@ -516,7 +516,7 @@ namespace Gameplay.Input
         }
         public interface IGameControlsActions
         {
-            void OnTouchPress(InputAction.CallbackContext context);
+            void OnCancel(InputAction.CallbackContext context);
         }
     }
 }

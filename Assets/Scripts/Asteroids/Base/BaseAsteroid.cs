@@ -12,7 +12,7 @@ namespace Gameplay.Obstacles
     {
         [SerializeField] private int scoreForPlayer;
         [Header("Asteroid Move Properties"), Space]
-        [Range(1,50)]
+        [Range(20,100)]
         [SerializeField] private float moveSpeed;
         [Range(0f, 45f)]
         [SerializeField] private float trajectoryVariance = 15f;

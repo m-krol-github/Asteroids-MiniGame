@@ -20,13 +20,8 @@ namespace Gameplay.UI
 
             closeView.onClick.AddListener(() =>
             {
-                HideView();
+                _manager.PauseUnpause();
             });
-        }
-
-        public void PauseUnpause()
-        {
-            
         }
 
         public override void ShowView()

@@ -1,5 +1,6 @@
 using System;
 using Gameplay.GamePlayer;
+using Gameplay.Input;
 using Gameplay.Obstacles;
 using Gameplay.UI;
 
@@ -26,24 +27,58 @@ namespace Gameplay
 
         public int PlayerLifes { get; set; }
 
-        private Camera mainCam;
-        
+        public bool IsGamePaused { get; private set; }
+
+        private UserInputs _inputs;
+
         protected override void Awake()
         {
             base.Awake();
+            
             PlayerLifes = 3;
+            Time.timeScale = 1;
+
+            _inputs = new UserInputs();
 
             _gameplayUI.InitGameplay(this);
             _playerManager.InitPlayerManager(this);
             _levels.Init(this);
 
-            mainCam = Camera.main;
+            _inputs.GameControls.Cancel.performed += (ctx) => PauseUnpause();
+
             Debug.Log("GameInit");
+        }
+
+        private void OnEnable()
+        {
+            _inputs.Enable();
+        }
+
+        public void PauseUnpause()
+        {
+            IsGamePaused = !IsGamePaused;
+
+            if (IsGamePaused)
+            {
+                _gameplayUI.UIPause.ShowView();
+                Time.timeScale = 0;
+            }
+            else if (!IsGamePaused)
+            {
+                _gameplayUI.UIPause.HideView();
+                Time.timeScale = 1;
+            }
         }
 
         public void GameOver()
         {
             SceneLoadManager.Instance.LoadScene(SceneLoadManager.SCENE_EXITGAME);
+        }
+
+
+        private void OnDisable()
+        {
+            _inputs.Disable();
         }
     }
 }
