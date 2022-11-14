@@ -31,9 +31,8 @@ namespace Gameplay
 
         #endregion
 
-        public float sizeCamX;
-
         [field: SerializeField] public int PlayerLifes { get; set; }
+        [field: SerializeField] public int PlayerScore { get; set; } = 0;
 
         public bool IsGamePaused { get; private set; }
 
@@ -54,11 +53,6 @@ namespace Gameplay
             _inputs.GameControls.Cancel.performed += (ctx) => PauseUnpause();
 
             Debug.Log("GameInit");
-        }
-
-        private void Update()
-        {
-            sizeCamX = References.GameCamera.pixelWidth;
         }
 
         private void OnEnable()

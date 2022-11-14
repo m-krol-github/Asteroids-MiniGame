@@ -19,10 +19,9 @@ namespace Gameplay.UI
         {
             _manager = manager;
 
-            lifes = manager.PlayerLifes;
-            level = manager.Levels.CurrentLevel;
-
-            score = 0;
+            lifes = _manager.PlayerLifes;
+            level = _manager.Levels.CurrentLevel;
+            score = _manager.PlayerScore;
 
             scoreText.text = score.ToString("D7");
             levelText.text = level.ToString("D2");
@@ -38,13 +37,13 @@ namespace Gameplay.UI
         public void AddLevel(int level)
         {
             this.level += level;
-            levelText.text = this.level.ToString();
+            levelText.text = this.level.ToString("D2");
         }
 
         public void TakeLife(int lifes)
         {
             this.lifes -= lifes;
-            lifesText.text = this.lifes.ToString();
+            lifesText.text = this.lifes.ToString("D2");
         }
     }
 }

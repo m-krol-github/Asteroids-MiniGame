@@ -35,18 +35,25 @@ namespace Gameplay.GamePlayer
             if (playgamePlayer != null)
                 Destroy(playgamePlayer.gameObject);
 
-            if (_manager.PlayerLifes == 0)
+            switch (_manager.PlayerLifes)
             {
-                _manager.GameOver();
-                return;
+                case 0:
+
+                    _manager.GameOver();
+
+                    break;
+
+                case > 0:
+
+                    Player player = Instantiate(_player, playerStartPoint.position, transform.rotation);
+                    playgamePlayer = player;
+                    player.PlayerInit(_manager, _pooling, playerSpeed, bulletShootForce);
+
+                    //take life from totalNumber of lifes
+                    _manager.PlayerLifes--;
+
+                    break;
             }
-
-            Player player = Instantiate(_player, playerStartPoint.position, transform.rotation);
-            playgamePlayer = player;
-            player.PlayerInit(_manager, _pooling, playerSpeed, bulletShootForce);
-
-            //take life from totalNumber of lifes
-            _manager.PlayerLifes--;
         }
     }
 }
