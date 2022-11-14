@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Gameplay.UI
 {
@@ -7,12 +8,20 @@ namespace Gameplay.UI
     {
         [SerializeField] private Button gameExit;
         [SerializeField] private Button closeView;
+        [SerializeField] private TextMeshProUGUI playerName;
 
         private GameManager _manager;
         
         public void InitPause(GameManager manager)
         {
             _manager = manager;
+
+            playerName.text = _manager.PlayerInformation.playerName;
+
+            closeView.onClick.AddListener(() =>
+            {
+                HideView();
+            });
         }
 
         public void PauseUnpause()

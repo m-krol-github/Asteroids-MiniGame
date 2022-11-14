@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForPlayer: 200
-  moveSpeed: 20
+  moveSpeed: 30.8
   trajectoryVariance: 15
   asteroidSpriteSet:
   - {fileID: 21300000, guid: bef3745353ab43f4499c90c0db16c4f6, type: 3}

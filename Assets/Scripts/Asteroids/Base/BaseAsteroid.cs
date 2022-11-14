@@ -12,6 +12,7 @@ namespace Gameplay.Obstacles
     {
         [SerializeField] protected int scoreForPlayer;
         [Header("Asteroid Move Properties"), Space]
+        [Range(1,50)]
         [SerializeField] protected float moveSpeed;
         [Range(0f, 45f)]
         [SerializeField] protected float trajectoryVariance = 15f;
@@ -66,30 +67,23 @@ namespace Gameplay.Obstacles
             float positionX = Mathf.Clamp(transform.position.x, -Values.GameValues.SCREEN_SIZE_X / 2, Values.GameValues.SCREEN_SIZE_X / 2);
             float positionY = Mathf.Clamp(transform.position.y, -Values.GameValues.SCREEN_SIZE_Y / 2, Values.GameValues.SCREEN_SIZE_Y / 2);
 
+            float posX = Mathf.Abs(positionX);
+            float posY = Mathf.Abs(positionY);
 
             //Debug.Log(positionX.ToString() + " " + positionY.ToString() + " ");
-            //Vector3 screenPosition = transform.position;
+            Vector3 screenPosition = transform.position;
 
-            if (transform.position.x > 12)
+            if (transform.position.x > posX || transform.position.x < -posX)
             {
-                transform.position = new Vector2(-12, transform.position.y);
+                screenPosition.x = -screenPosition.x;
             }
 
-            else if (transform.position.x < -12)
+            if (transform.position.y > posY || transform.position.y < -posY)
             {
-                transform.position = new Vector2(12, transform.position.y);
+                screenPosition.y = -screenPosition.y;
             }
 
-            else if (transform.position.y > 7.5f)
-            {
-                transform.position = new Vector2(transform.position.x, -7.5f);
-            }
-
-            else if (transform.position.y < -7.5)
-            {
-                transform.position = new Vector2(transform.position.x, 7.5f);
-            }
-
+            transform.position = screenPosition;
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)

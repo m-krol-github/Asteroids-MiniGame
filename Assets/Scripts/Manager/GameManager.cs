@@ -22,6 +22,8 @@ namespace Gameplay
         [SerializeField] private PlayerManager _playerManager;
         public PlayerManager PlayerManager => _playerManager;
 
+        [field: SerializeField] public PlayerInformation PlayerInformation { get; private set; }
+
         public int PlayerLifes { get; set; }
 
         private Camera mainCam;
@@ -38,16 +40,10 @@ namespace Gameplay
             mainCam = Camera.main;
             Debug.Log("GameInit");
         }
-                
-        private void Update()
-        {
-            Debug.Log(PlayerLifes.ToString());
-        }
 
         public void GameOver()
         {
             SceneLoadManager.Instance.LoadScene(SceneLoadManager.SCENE_EXITGAME);
-            Debug.Log("GameOver");
         }
     }
 }

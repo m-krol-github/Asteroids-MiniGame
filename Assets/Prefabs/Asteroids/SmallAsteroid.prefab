@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreForPlayer: 400
-  moveSpeed: 30
+  moveSpeed: 37
   trajectoryVariance: 15
   asteroidSpriteSet:
   - {fileID: 21300000, guid: 89f2a7b5a40e5914aa7dee0abb097492, type: 3}
   - {fileID: 21300000, guid: c2a4b0bc956249d4ab436878581881aa, type: 3}
-  rb: {fileID: 0}
-  col: {fileID: 0}
-  asteroidRenderer: {fileID: 0}
+  rb: {fileID: 7213158881175199260}
+  col: {fileID: 7480890406513587096}
+  asteroidRenderer: {fileID: 3197464820321341146}
